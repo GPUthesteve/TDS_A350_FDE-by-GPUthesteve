@@ -1,0 +1,373 @@
+
+//Hint : "Magic detent" :If you know you're heavy taking off, flaps 3 exists, use it. and if you're light on approach, then land of flaps 3
+
+
+[General]
+atc_type=Airbus
+atc_model=A35K
+performance=
+Category=airplane
+
+
+
+[WEIGHT_AND_BALANCE]// WV006
+max_gross_weight = 705259                      
+empty_weight = 342000                           
+reference_datum_position     =  0, 0, 0         
+empty_weight_CG_position     =  6, 0.0, 0.0        
+max_number_of_stations = 50
+ 
+ 
+ 
+station_load.0 =    "400.0,  100.0,  0,    5.0, Flight Deck"                  
+station_load.1 =  "0,  65.0,   0,    5.0, F and C Pax"            
+station_load.2 =  "0, -45.0,   0.0,    5.0, Y Pax"             
+station_load.3 =   "0,  45.0,   0.0,   -5.0, FWD Cargo"  	//Load Capacity, FWD CC 26 500 kg(58 423 lb)
+station_load.4 =   "0, -45.0,   0.0,   -5.0, AFT Cargo"   	//Load Capacity, AFT CC 24 500 kg(54 013 lb)
+station_load.5 =    "0, -62.0,   0.0,   -5.0,  Bulk Cargo"  //Load Capacity, Bulk CC 1 500 kg(3 307 lb)     
+station_load.6 =   "0,  60.0,   0.0,    5.0, FWD CABIN CREW"          
+station_load.7 =    "0, -65.0,   0.0,    5.0, AFT CABIN CREW"          
+;Moments of Inertia
+empty_weight_pitch_MOI  =24747462.000000
+empty_weight_roll_MOI   =8297432.085561
+empty_weight_yaw_MOI    =22997946.564935
+empty_weight_coupled_MOI= 0.0
+
+[flight_tuning] //simulated FBW input lag
+elevator_effectiveness			= 0.65
+aileron_effectiveness			= 0.2					
+rudder_effectiveness			= .7
+
+[GeneralEngineData]
+engine_type = 1                                 //0=Piston, 1=Jet, 2=None, 3=Helo-Turbine, 4=Rocket, 5=Turboprop
+Engine.0 = 3.2, -34.5, -5.7                    //(feet) longitudinal, lateral, vertical distance from reference datum
+Engine.1 =3.2,  34.5, -5.7                    //(feet) longitudinal, lateral, vertical distance from reference datum
+fuel_flow_scalar = 1.33                 //Scalar for fuel flow efficiency
+min_throttle_limit = -0.34;                     //Minimum percent throttle.  Generally negative for turbine reverser
+max_contrail_temperature 		= -30
+[TurbineEngineData]
+bypass_ratio          = 9.6
+fuel_flow_gain = 0.002                        
+inlet_area = 65.851                             
+rated_N2_rpm = 12424                            
+static_thrust = 97000                           
+afterburner_available = 0                       
+reverser_available = 1                         
+ThrustSpecificFuelConsumption=0.2730  
+
+[jet_engine]
+thrust_scalar = 1
+[SMOKESYSTEM]
+
+[electrical]
+max_battery_voltage = 24
+generator_alternator_voltage = 28
+max_generator_alternator_amps = 60
+electric_always_available = 0
+flap_motor = 0, 5, 17
+gear_motor = 0, 5, 17
+autopilot = 0, 5, 17
+avionics_bus = 0, 10, 17
+avionics = 1, 5, 17
+pitot_heat = 0, 15, 17
+additional_system = 0, 20, 17
+marker_beacon = 1, 2, 17
+gear_warning = 0, 2, 17
+fuel_pump = 0, 5, 17
+starter1 = 0, 20, 17
+starter2 = 0, 20, 17
+starter3 = 0, 20, 17
+starter4 = 0, 20, 17
+light_nav = 0, 5, 17
+light_beacon = 0, 5, 17
+light_landing = 0, 5, 17
+light_taxi = 0, 5, 17
+light_strobe = 0, 5, 17
+light_panel = 0, 5, 17
+prop_sync = 0, 5, 17
+auto_feather = 0, 15, 17
+auto_brakes = 0, 15, 17
+standby_vacuum = 0, 15, 17
+hydraulic_pump = 0, 2, 17
+fuel_transfer_pump = 0, 5, 17
+propeller_deice = 0, 5, 17
+light_recognition = 0, 5, 17
+light_wing = 0, 5, 17
+light_logo = 0, 5, 17
+
+[contact_points]
+point.0=1, 98.3,  0, -15.7,   1181.1, 0, 3.444882, 75.0, 1.252, 1.150, 0.8235, 14.0, 14.0, 0, 270.0, 270.0
+point.1=1, -12.4, -17 , -16.5,   1574.8, 1, 4.593176,  0.0, 2.317, 1.273, 0.8470, 16.9, 16.9, 2, 270.0, 270.0
+point.2=1, -12.4,  17 , -16.5,   1574.8, 2, 4.593176,  0.0, 2.317, 1.273, 0.8470, 17.1, 17.1, 3, 270.0, 270.0
+//scrapes
+point.3=2,  114,   0.00,  -1.000,  200, 0, 0.00,  0.00, 0.0,   0.0,  0.0,   0.0,  0.0, 4,   0.0,   0.0 //nosegear scrape
+point.4=2, -114,   0.00,   4.5,  200, 0, 0.00,  0.00, 0.0,   0.0,  0.0,   0.0,  0.0, 9,   0.0,   0.0 //tailstrike
+point.5=2,   20, -34, -12.7,  400, 0, 0.00,  0.00, 0.0,   0.0,  0.0,   0.0,  0.0, 5,   0.0,   0.0 //engine1
+point.6=2,   20,  34, -12.7,  400, 0, 0.00,  0.00, 0.0,   0.0,  0.0,   0.0,  0.0, 6,   0.0,   0.0 //engine2
+point.7=2,  -40, -105,   8,  200, 0, 0.00,  0.00, 0.0,   0.0,  0.0,   0.0,  0.0, 5,   0.0,   0.0	
+point.8=2,  -40,  105,  8,  200, 0, 0.00,  0.00, 0.0,   0.0,  0.0,   0.0,  0.0, 6,   0.0,   0.0
+point.9=2,   85,   0.00,  -7,  400, 0, 0.00,  0.00, 0.0,   0.0,  0.0,   0.0,  0.0, 9,   0.0,   0.0
+static_pitch = -0.452
+static_cg_height = 15.394
+gear_system_type=1      //Hydraulic[contact_points]
+point.0=1, 98.3,  0, -15.7,   1181.1, 0, 3.444882, 75.0, 1.252, 1.150, 0.8235, 14.0, 14.0, 0, 270.0, 270.0
+point.1=1, -12.4, -17 , -16.5,   1574.8, 1, 4.593176,  0.0, 2.317, 1.273, 0.8470, 16.9, 16.9, 2, 270.0, 270.0
+point.2=1, -12.4,  17 , -16.5,   1574.8, 2, 4.593176,  0.0, 2.317, 1.273, 0.8470, 17.1, 17.1, 3, 270.0, 270.0
+//scrapes
+point.3=2,  114,   0.00,  -1.000,  200, 0, 0.00,  0.00, 0.0,   0.0,  0.0,   0.0,  0.0, 4,   0.0,   0.0 //nosegear scrape
+point.4=2, -114,   0.00,   4.5,  200, 0, 0.00,  0.00, 0.0,   0.0,  0.0,   0.0,  0.0, 9,   0.0,   0.0 //tailstrike
+point.5=2,   20, -34, -12.7,  400, 0, 0.00,  0.00, 0.0,   0.0,  0.0,   0.0,  0.0, 5,   0.0,   0.0 //engine1
+point.6=2,   20,  34, -12.7,  400, 0, 0.00,  0.00, 0.0,   0.0,  0.0,   0.0,  0.0, 6,   0.0,   0.0 //engine2
+point.7=2,  -40, -105,   8,  200, 0, 0.00,  0.00, 0.0,   0.0,  0.0,   0.0,  0.0, 5,   0.0,   0.0	
+point.8=2,  -40,  105,  8,  200, 0, 0.00,  0.00, 0.0,   0.0,  0.0,   0.0,  0.0, 6,   0.0,   0.0
+point.9=2,   85,   0.00,  -7,  400, 0, 0.00,  0.00, 0.0,   0.0,  0.0,   0.0,  0.0, 9,   0.0,   0.0
+static_pitch = -0.452
+static_cg_height = 15.394
+gear_system_type=1      //Hydraulic
+
+[gear_warning_system]
+gear_warning_available = 1    //Normal
+pct_throttle_limit =  0.1     //Percent throttle that activates warning
+flap_limit_idle    =  5.0     //Flap angle that activates warning at idle
+flap_limit_power   = 25.5     //Flap angle that activates warning at above idle
+
+[brakes]
+parking_brake = 1       //Parking brake available
+toe_brakes_scale = 1.0  //Brake scalar
+differential_braking_scale = 0.65
+auto_brakes=4
+
+[hydraulic_system]
+normal_pressure = 3000.0    //PSI
+electric_pumps  = 0         //no electric pumps
+engine_map      = 1,1,0,0   //pumps on Eng1,2
+
+[Views]
+eyepoint = 103.0,  -2, 6
+
+[FLAPS.0]
+type					= 1
+system_type				= 1
+span-outboard				= 0.8 
+extending-time				= 20 
+damaging-speed				= 250
+blowout-speed				= 300
+lift_scalar				= 0.3	
+drag_scalar				= 0.7
+flaps-position.0			= 0.0
+flaps-position.2			= 12.0   //CONF 1+F
+flaps-position.3			= 20.0	//CONF 2
+flaps-position.4			= 26.0	//CONF 3
+flaps-position.5			= 40	//CONF Full
+[FLAPS.1]
+type					= 2
+system_type				= 1
+span-outboard				= 0.8
+extending-time				= 10  
+damaging-speed				= 250 
+blowout-speed				= 300
+lift_scalar				= 0.01	
+drag_scalar				= 0.7
+flaps-position.0			= 0
+flaps-position.1			= 13 //CONF 1
+flaps-position.3			= 20 //CONF 1
+flaps-position.4			= 23 //CONF 3
+
+
+[Radios]
+// Radio Type = availiable, standby frequency, has glide slope
+Audio.1       = 1
+Com.1         = 1, 1
+Com.2         = 1, 1
+Nav.1         = 1, 1, 1
+Nav.2         = 1, 1, 0
+Adf.1         = 1
+Transponder.1 = 1
+Marker.1      = 1
+
+[keyboard_response]
+//Breakpoint speeds (knots) on the keyboard increments of control surfaces.
+//Speed at which the incremenet is reduced to  1/2 and 1/8 respectively.
+elevator = 150, 250
+aileron  = 150, 250
+rudder   = 150, 250
+
+[direction_indicators]
+//1 Type: 0=None, 1=Vacuum Gyro, 2=Electric Gyro, 3=Electro-Mag Slaved Compass, 4=Slaved to another
+//2 Indicator number of slaving indicator if Type = 4
+direction_indicator.0=3,0
+
+[attitude_indicators]
+//Type: 0=None, 1=Vacuum Gyro, 2=Electric Gyro
+attitude_indicator.0 = 2
+attitude_indicator.1 = 1 
+
+[turn_indicators]
+//Type: 0=None, 1=Electric Gyro, 2= Vacuum Gyro
+turn_indicator.0=1,0
+turn_indicator.1=1,0
+[LIGHTS]        
+//Types: 1=beacon, 2=strobe, 3=navigation, 4=cockpit, 5=landing 6=taxi, 7=recognition, 8=wing, 9=logo 
+
+light.1 = 8, -28.500,   -50.00,  17.00 , Tds_A350_wing_light_out
+light.2 = 8, -28.500,    50.00,  17.00 , Tds_A350_wing_light_out
+light.3 = 8,  28.500,   -32.20,  -9.00 , Opensky_nacelle_refl
+light.4 = 8,  28.500,    32.20,  -9.00 , Opensky_nacelle_refl
+light.5 = 8,  54.495,     9.85,   2.80, Opensky_757_nav_yellow
+light.6 = 8,  54.495,    -9.85,   2.80, Opensky_757_nav_yellow
+light.7 = 3,  102.254,     0.00,   6.70, fx_vclighth
+
+[EFFECTS]
+wake=fx_wake
+water=fx_spray
+dirt=fx_tchdrt
+concrete=fx_sparks
+touchdown=fx_tchdwn
+
+[exits]
+number_of_exits = 4
+exit_rate.0 = 0.4                               ;Percent per second
+exit_rate.1 = 0.4                               ;Percent per second
+exit_rate.2 = 0.4                               ;Percent per second
+exit_rate.3 = 0.4                               ;Percent per second
+
+[fuel]
+fuel_type = 2
+number_of_tank_selectors = 2
+electric_pump = 1
+Center1 =   10,    0.000, -2.02, 26395, 0
+LeftMain =  -3,  -21.555, -2.02, 3888, 0
+RightMain = -3,   21.555, -2.02, 3888, 0
+
+[airplane_geometry]
+wing_area               = 5145                //Square feet
+wing_span               = 213.00            //Feet
+wing_root_chord         = 44.19            //Feet //44.19
+wing_dihedral           = 6.2                   //Degrees
+wing_incidence          = 0                //Degrees
+wing_twist              = 0          //Degrees
+oswald_efficiency_factor= 1.0914                //Measure of lift effeciency of wing
+wing_winglets_flag      = 1                     //Are winglets available?
+wing_sweep              = 31.9                  //Degrees, wing leading edge
+wing_pos_apex_lon       = 35                 //Feet, longitudinal distance from reference point, negative going aft
+wing_pos_apex_vert      = -2.45                   //Feet, vertical distance from reference point, positive going up
+htail_area              = 332.549              //Square feet
+htail_span              = 30.336                //Feet
+htail_pos_lon           = -91.5                //Feet, longitudinal distance from reference point, negative going aft
+htail_pos_vert          = 8.0                   //Feet, vertical distance from reference point, positive going up
+htail_incidence         = 0.0                   //Degrees
+htail_sweep             = 35.442                //Degrees, horizontal tail leading edge
+vtail_area              = 534.419                 //Square feet
+vtail_span              = 34.09                 //Feet, tip to body
+vtail_sweep             = 45.9416               //Degrees, vertical tail leading edge
+vtail_pos_lon           = -82.7                //Feet, longitudinal distance from reference point, negative going aft
+vtail_pos_vert          = 11.5                  //Feet, vertical distance from reference point, positive going up
+elevator_area           = 104.53                //Square feet
+aileron_area            = 68.0                  //Square feet
+rudder_area             = 176.189                 //Square feet
+elevator_up_limit       = 20.0                  //Degrees
+elevator_down_limit     = 30.0                  //Degrees
+aileron_up_limit        = 20.0                  //Degrees
+aileron_down_limit      = 30.0                  //Degrees
+rudder_limit            = 35.0                  //Degrees
+elevator_trim_limit     = 20.0                  //Degrees
+spoiler_limit           = 50.0                  //Degrees
+spoilerons_available    = 1                     //Spoilerons Available?
+aileron_to_spoileron_gain = 3                   //Aileron to spoileron gain
+min_ailerons_for_spoilerons = 10                //Degrees
+min_flaps_for_spoilerons = 0                    //Minimum flap handle position when spoilerons activate
+auto_spoiler_available=1
+spoiler_extension_time=2.000000
+positive_g_limit_flaps_up=4.000000
+positive_g_limit_flaps_down=3.000000
+negative_g_limit_flaps_up=-3.000000
+negative_g_limit_flaps_down=-2.000000
+
+[REFERENCE SPEEDS]
+flaps_up_stall_speed			= 142.0
+full_flaps_stall_speed			= 113.0
+cruise_speed				= 477.0
+max_mach				= 0.90      
+max_indicated_speed			= 360
+
+[autopilot]
+autopilot_available=1
+flight_director_available=1 
+default_vertical_speed=0
+autothrottle_available=1 
+//use_no_default_pitch=			1
+//use_no_default_bank=			1
+pitch_takeoff_ga=5 
+autothrottle_arming_required=		1
+autothrottle_takeoff_ga=		2
+autothrottle_max_rpm=			92.0
+default_pitch_mode=0
+default_bank_mode=0
+max_pitch=				4.00
+max_pitch_acceleration=		 	1.00
+max_pitch_velocity_lo_alt=		2.00
+max_pitch_velocity_hi_alt=		0.30  
+max_pitch_velocity_lo_alt_breakpoint=	7000
+max_pitch_velocity_hi_alt_breakpoint=	24000
+max_bank=				30.00
+max_bank_acceleration=			1.2
+max_bank_velocity=			1.5
+max_throttle_rate=			0.0115
+nav_proportional_control=		12.00
+nav_integrator_control=			0.05
+nav_derivative_control=			0.01
+nav_integrator_boundary=		0.5
+nav_derivative_boundary=		0.35
+gs_proportional_control=		15.0 
+gs_integrator_control=			0.30
+gs_derivative_control=			0.00
+gs_integrator_boundary=			0.7
+gs_derivative_boundary=			0.00
+yaw_damper_gain=			1.00
+
+[forcefeedback]
+gear_bump_nose_magnitude=3000           ; 0 - 10000
+gear_bump_nose_direction=18000          ; 0 - 35999 degrees
+gear_bump_nose_duration=250000          ; in microseconds
+gear_bump_left_magnitude=2700           ; 0 - 10000
+gear_bump_left_direction=35500          ; 0 - 35999 degrees
+gear_bump_left_duration=250000          ; in microseconds
+gear_bump_right_magnitude=2700          ; 0 - 10000
+gear_bump_right_direction=00500         ; 0 - 35999 degrees
+gear_bump_right_duration=250000         ; in microseconds
+ground_bumps_magnitude1=1300            ; 0 - 10000
+ground_bumps_angle1=08900               ; 0 - 35999 degrees
+ground_bumps_intercept1=3.0
+ground_bumps_slope1=0.20
+ground_bumps_magnitude2=200             ; 0 - 10000
+ground_bumps_angle2=09100               ; 0 - 35999 degrees
+ground_bumps_intercept2=1.075
+ground_bumps_slope2=0.035
+crash_magnitude1=10000                  ; 0 - 10000
+crash_direction1=01000                  ; 0 - 35999 degrees
+crash_magnitude2=10000                  ; 0 - 10000
+crash_direction2=9000                   ; 0 - 35999 degrees
+crash_period2=75000                     ; in microseconds
+crash_duration2=2500000                 ; in microseconds
+
+[stall_warning]
+type=2
+stick_shaker=1
+
+[pitot_static]
+pitot_heat=1.000000
+vertical_speed_time_constant=0.7
+
+[vacuum_system]
+max_pressure=5.150000
+vacuum_type=2
+electric_backup_pressure=0.000000
+engine_map=1,1,0,0
+
+[pneumatic_system]
+max_pressure=18.000000
+bleed_air_scalar=1.000000
+
+[deice_system]
+structural_deice_type=1
+
