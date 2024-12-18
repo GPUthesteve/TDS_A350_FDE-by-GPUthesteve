@@ -1,8 +1,10 @@
-#TDS A35X FDE Patch
+##TDS A35X FDE Patch
 
 in this FDE Patch, I give you `"tdsa350-900"`, `"tdsa350-1000"`airfiles and `"aircraft_35K/359_patch.txt"` source patch config
 
-installation :
+#Download
+`git -clone` or download source zip
+#Installation :
 1. backup your original aircraft.cfg (by copypasta it and name it something else like aircraft_orig.cfg)
 2. in `"aircraft.cfg"`, the one which you didnt rename, you're gonna patch it with given `"aircraft_patch.txt"`
 	2.1 replace all texts inside `aircraft.cfg` with texts in `aircraft_patch.txt.` now you've patched the config, great.
@@ -10,7 +12,7 @@ installation :
 3. now replace your `airfile` with given one, back up on your discretion
 
 
-Change(s) Applicable to all variant
+#Change(s) Applicable to all variant
 	- WBM enhancement : Changed fuel tanks position and payload positions to appropriate position.
 	- Fuel consumption : as the name suggest, that's it.
 	- Engine enhancement : reworked engine model to simulate Trent XWB's behaviour (that n1 would never exceeds 90% in normal ops)
