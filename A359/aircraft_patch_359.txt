@@ -35,7 +35,7 @@ empty_weight_coupled_MOI= 0.0
 elevator_effectiveness			= 0.65
 aileron_effectiveness			= 0.2					
 rudder_effectiveness			= .7
-
+roll_stability              =2 //smooths out roll command
 [GeneralEngineData]
 engine_type = 1                                 //0=Piston, 1=Jet, 2=None, 3=Helo-Turbine, 4=Rocket, 5=Turboprop
 Engine.0 = 3.2, -34.5, -5.7                    //(feet) longitudinal, lateral, vertical distance from reference datum
