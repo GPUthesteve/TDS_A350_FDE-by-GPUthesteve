@@ -345,7 +345,7 @@ stick_shaker=1
 
 [pitot_static]
 pitot_heat=1.000000
-vertical_speed_time_constant=0.7
+vertical_speed_time_constant=100
 [vacuum_system]
 max_pressure=5.150000
 vacuum_type=2
